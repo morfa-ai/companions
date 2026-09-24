@@ -11,7 +11,7 @@ line. Compatible releases may advance each component's patch independently.
 
 ### Added
 
-- `companions` and `portal`: the skills document `cancel_job` — when to cancel, the `cancelled`/`cancel_requested`/`cancel_not_applied` statuses, re-cancelling on a pause, and what a cancel charges (work already done stays charged; nothing more is billed). It needs the API/Portal release that ships `cancel_job`.
+- `companions` and `portal`: the skills document `cancel_job` — when to cancel, the `cancelled`/`cancel_requested`/`cancel_not_applied` statuses, re-cancelling on a pause, and what a cancel charges (work already done stays charged, charges for undelivered work are refunded, and nothing more is billed). It needs the API/Portal release that ships `cancel_job`.
 
 ### Fixed
 
