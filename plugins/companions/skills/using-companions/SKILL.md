@@ -58,7 +58,7 @@ For an ordinary one-person question:
 
 For more than one Companion, select the group for the specific problem and pass every participant explicitly, plus `main` when the mode needs a lead. A saved everyday default may be one candidate, but it does not determine the group. A previously used group or team is never reused automatically; pass a `team_<uuid>` only when the user chose that team for this problem.
 
-Continuing a job (`get_answer`, `submit_tool_outputs`, `submit_reply`) needs no roster.
+Continuing or cancelling a job (`get_answer`, `submit_tool_outputs`, `submit_reply`, `cancel_job`) needs no roster.
 
 ## Give useful context
 
@@ -83,4 +83,4 @@ Conceptual compression means removing repetition and shorthand while keeping the
 
 On first use, run the `/setup` flow: check the connection, show the roster from `list_companions` (one filtered page when the tool advertises `view`, the complete roster otherwise), explain how the system is used, and offer starting questions grounded in the user's actual recent work. Setup is free and never spends consultation credit. Do not ask the user to clear or restart the session.
 
-Only `consult` and `discover` bill. `consult` returns a receipt with a `job_id`, never the answer: collect every run with `get_answer`, the only tool that returns content. `pending` means still running, not lost — never repeat `consult` to retrieve it. For continuation states such as `pending`, `requires_action`, and `needs_reply`, follow [the consultation protocol](references/protocol.md).
+Only `consult` and `discover` bill. `consult` returns a receipt with a `job_id`, never the answer: collect every run with `get_answer`, the only tool that returns content. `pending` means still running, not lost — never repeat `consult` to retrieve it. For continuation states such as `pending`, `requires_action`, and `needs_reply`, and for cancelling a job, follow [the consultation protocol](references/protocol.md).

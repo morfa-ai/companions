@@ -9,6 +9,14 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+### Added
+
+- `companions` and `portal`: the skills document `cancel_job` — when to cancel, the `cancelled`/`cancel_requested`/`cancel_not_applied` statuses, re-cancelling on a pause, and what a cancel charges (work already done stays charged, charges for undelivered work are refunded, and nothing more is billed). It needs the API/Portal release that ships `cancel_job`.
+
+### Fixed
+
+- `portal`: the `get_answer` wait is documented as 40 seconds (default and maximum).
+
 ## [0.8.1] - 2026-09-22
 
 `continue_from` needs Portal 0.8.1; `messages` on the remote MCP needs API 0.8.1. Against older servers the skills fall back to a fresh consult with the context in the prompt.

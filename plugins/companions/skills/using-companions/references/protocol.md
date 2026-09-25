@@ -1,6 +1,6 @@
 # Consultation protocol
 
-Only `consult` and `discover` bill; only `get_answer` returns run content. Every other tool feeds an existing job or reads the catalogue. `consult` only submits: it bills the run and returns a receipt with a `job_id`, never the answer.
+Only `consult` and `discover` bill; only `get_answer` returns run content. Every other tool feeds an existing job, stops one (`cancel_job`), or reads the catalogue. `consult` only submits: it bills the run and returns a receipt with a `job_id`, never the answer.
 
 ## Directory
 
@@ -19,6 +19,9 @@ Treat the response status as the next action:
 - `ambiguous`: show the candidates and retry with the intended stable ID after the user or context resolves it.
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
+- `cancelled`: the run was stopped and is over; nothing more to collect. Tell the user; do not start a new consultation to replace it unless they ask.
+- `cancel_requested`: the stop was accepted but not yet confirmed. Submit no more tool outputs or replies for this job; collect it with `get_answer`.
+- `cancel_not_applied`: with `outcome: already_complete`, the run finished first — collect the answer with `get_answer`; with `outcome: retry_required`, it changed state mid-request — call `cancel_job` again.
 
 Remote error results use `{status: "error", http_status, body}`, where `body` is the API's error response as sent. Read the error type and message inside it: `body.details` carries `error_type` and `message`, and a framework error carries `body.detail` instead (a message string or a list of validation errors).
 
@@ -31,3 +34,6 @@ If credit is insufficient, tell the user before attempting another consultation.
 ## Partial answers
 
 A partial answer keeps status `complete` and reports `partial: true`. `failed_nodes` holds `{node, stage_id, error_type}` objects. `skipped_nodes` reports gate skips whether or not the answer is partial. Older results omit fields they do not have; do not invent a reason. `balance_after` is the run's own ledger snapshot at settlement, not live credit; `check_balance` is the live read.
+## Cancelling a job
+
+When the user asks to stop a consultation, or it is no longer wanted, call `cancel_job` with its `job_id`. It needs no roster. A cancel stops the run at the node it arrives on and never charges for more; what was already done stays charged. Anything charged but not delivered is refunded, and a `cancelled` result carries the net `cost` and `delivered_nodes` when present. After asking to cancel, if `get_answer` returns `requires_action` or `needs_reply` for that job, call `cancel_job` again instead of executing the calls or replying — this overrides the usual handling of those states. A running `discover` is not stopped; it finishes on its own. If your tool list has no `cancel_job`, the server predates it: tell the user the job cannot be stopped from here, and never start a new consultation to replace or cancel it.
