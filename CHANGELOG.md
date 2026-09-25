@@ -12,10 +12,21 @@ line. Compatible releases may advance each component's patch independently.
 ### Added
 
 - `companions` and `portal`: the skills document `cancel_job` — when to cancel, the `cancelled`/`cancel_requested`/`cancel_not_applied` statuses, re-cancelling on a pause, and what a cancel charges (work already done stays charged, charges for undelivered work are refunded, and nothing more is billed). It needs the API/Portal release that ships `cancel_job`.
+- `companions` and `portal`: the protocol reference says that `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`. The Portal plugin also documents `discover`'s `timeout_seconds` (0 to 40, default 40; 0 returns the job handle at once for `get_answer`).
+- `portal`: documents the Portal 0.9.0 `local_tools` consult field (`local_tools: false` turns off Portal's local tools, and with `tools: []` gives a run with no tools). The remote `companions` protocol notes that `local_tools` is Portal-only.
+- `portal`: the consult receipt reports `portal.local_tools` (whether Portal's local tools were offered for that call) and `portal.client_tools` (the client tools Portal accepted, by their declared names), separately from `portal.substituted`.
+- `portal`: partial answers documented in full — `partial_reason`, `delivered_nodes`, the `insufficient_balance` and `pause_cycle_cap` hints, and a failed result's `cost`. The remote `companions` plugin documents only what its MCP returns (`partial`, `failed_nodes`, `skipped_nodes`). Both say `balance_after` is the run's own ledger snapshot at settlement, not live credit, and that `check_balance` is the live read.
+- `portal`: documents `discover`'s optional `idempotency_key` and reusing it on retries.
+- `companions` and `portal`: how to tell a partial `submit_tool_outputs` acknowledgement (`requires_action` with `accepted` / `missing` and no `pending_tool_calls`) apart from an actionable `requires_action` that carries pending calls.
+
+### Changed
+
+- **Breaking:** A `list_companions` call with no arguments now returns each team's `member_count` instead of its full roster. To see a team's members, call `list_companions` with `view="members"` and its `team_id`; `team_id` must be a `team_<uuid>` id. Needs API 0.9.0 / Portal 0.9.0.
+- **Breaking** (`portal` only): Errors from the Companions API now come back as `{status: "error", reason, message, fix}`, with `fix` omitted when unavailable and `reason` always nonempty. `http_status` and `job_id` stay as metadata, and the raw `body` is no longer returned. Portal's own local refusals keep their typed status and always carry a `message`. The remote `companions` plugin documents its unchanged `{status: "error", http_status, body}` shape. Needs Portal 0.9.0.
 
 ### Fixed
 
-- `portal`: the `get_answer` wait is documented as 40 seconds (default and maximum).
+- `portal`: the `get_answer` wait is documented as 40 seconds (default and maximum), and the protocol states the 1 h / 256-result retention bound for a repeat `get_answer` on a delivered job.
 
 ## [0.8.1] - 2026-09-22
 
