@@ -13,13 +13,13 @@ After an `answer` or `parallel_with_main` run is collected, Portal keeps the thr
 Treat the response status as the next action:
 
 - `complete`: read the typed `content`, translate it for the user, and attribute it.
-- `pending` or `running`: still working, not lost. Keep the `job_id` and call `get_answer`. It waits up to `timeout_seconds` (default 45); call it again on a useful cadence, not in a tight loop. Never start another consultation to collect the same work — that can create another billed run.
+- `pending` or `running`: still working, not lost. Keep the `job_id` and call `get_answer`. It waits up to `timeout_seconds` (default 45); call it again on a useful cadence, not in a tight loop. Never start another consultation to collect the same work — that can create another billed run. Portal's `discover` accepts `timeout_seconds` from 0 to 40 (default 40): it waits up to 40 seconds; 0 returns the job handle at once for `get_answer`.
 - `requires_action`: execute every pending client-tool call, then pass exactly one result per `tool_call_id` to `submit_tool_outputs`. It returns a receipt; collect the resumed run with `get_answer`.
 - `needs_reply`: answer the requested clarification with `submit_reply`, then collect with `get_answer`.
 - `ambiguous`: show the candidates and retry with the intended stable ID after the user or context resolves it.
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
 
-A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits.
+A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits. `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`; read their current values from `list_params`.
 
 If credit is insufficient, tell the user before attempting another consultation.

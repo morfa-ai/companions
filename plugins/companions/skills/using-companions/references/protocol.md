@@ -16,6 +16,6 @@ Treat the response status as the next action:
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
 
-A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits.
+A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits. `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`; read their current values from `list_params`.
 
 If credit is insufficient, tell the user before attempting another consultation.
