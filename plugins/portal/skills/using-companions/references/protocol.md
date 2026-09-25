@@ -19,7 +19,7 @@ Treat the response status as the next action:
 - `ambiguous`: show the candidates and retry with the intended stable ID after the user or context resolves it.
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
-- `cancelled`: the run was stopped and is over; nothing more to collect. Tell the user; do not start a new consultation to replace it unless they ask. A later `get_answer` for it returns the same result while Portal keeps it; after that, or after a Portal restart, it answers `portal_lost_ownership` — nothing more is owed.
+- `cancelled`: the run was stopped and is over; nothing more to collect. Tell the user; do not start a new consultation to replace it unless they ask. A later `get_answer` for it returns the same result while Portal keeps it: in memory, for up to one hour after it was first returned, and only for the 256 most recent results. After that, or after a Portal restart, it answers `portal_lost_ownership` — nothing more is owed.
 - `cancel_requested`: the stop was accepted but not yet confirmed. Submit no more tool outputs or replies for this job; collect it with `get_answer`.
 - `cancel_not_applied`: with `outcome: already_complete`, the run finished first — collect the answer with `get_answer`; with `outcome: retry_required`, it changed state mid-request — call `cancel_job` again.
 
