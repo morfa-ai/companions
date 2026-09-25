@@ -20,7 +20,7 @@ Treat the response status as the next action:
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
 
-Portal error results use `{status, reason, message, fix}`, with `fix` omitted when unavailable. Upstream errors use `status: "error"`; local refusals keep their typed status. `reason` is always nonempty. `http_status` and `job_id` remain metadata. Read `reason` and `message`; never parse `body`.
+Remote error results use `{status: "error", http_status, body}`, where `body` is the API's error response as sent. Read the error type and message inside it: `body.details` carries `error_type` and `message`, and a framework error carries `body.detail` instead (a message string or a list of validation errors).
 
 A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits. `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`; read their current values from `list_params`.
 
@@ -30,14 +30,4 @@ If credit is insufficient, tell the user before attempting another consultation.
 
 ## Partial answers
 
-A partial answer keeps status `complete` and reports `partial: true`. When present, `partial_reason` is `insufficient_balance`, `pause_cycle_cap` or `node_failure`, and `delivered_nodes` lists the delivered node names in graph order. `failed_nodes` holds `{node, stage_id, error_type}` objects. `skipped_nodes` reports gate skips whether or not the answer is partial. Older results omit fields they do not have; do not invent a reason or hint.
-
-For `insufficient_balance` the hint reads:
-
-> Partial answer: your credit ran out before every node could run. Only the delivered nodes are billed; `cost` is their total. Nodes that did not deliver add nothing to it: any charge they had was refunded. Top up and re-run for the full answer.
-
-For `pause_cycle_cap` the hint reads:
-
-> Partial answer: the run hit the tool-call pause limit before every node finished. Only the delivered nodes are billed; `cost` is their total. Nodes that did not deliver add nothing to it: any charge they had was refunded. Re-run with fewer tool rounds for the full answer.
-
-`node_failure` adds no hint. A failed result keeps its reported numeric `cost`, including `0.0` after a whole-run refund. `balance_after` is the run's own ledger snapshot at settlement, not live credit; `check_balance` is the live read.
+A partial answer keeps status `complete` and reports `partial: true`. `failed_nodes` holds `{node, stage_id, error_type}` objects. `skipped_nodes` reports gate skips whether or not the answer is partial. Older results omit fields they do not have; do not invent a reason. `balance_after` is the run's own ledger snapshot at settlement, not live credit; `check_balance` is the live read.

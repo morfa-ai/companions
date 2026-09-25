@@ -32,7 +32,7 @@ Treat the response status as the next action:
 - `decision`: fix the reported input problem before making a new call; there may be no job to poll.
 - `failed` or `error`: explain the useful error message. Do not pretend a Companion answered.
 
-Portal error results use `{status, reason, message, fix}`, with `fix` omitted when unavailable. Upstream errors use `status: "error"`; local refusals keep their typed status. `reason` is always nonempty. `http_status` and `job_id` remain metadata. Read `reason` and `message`; never parse `body`.
+Errors from the Companions API use `{status: "error", reason, message, fix}`, with `fix` omitted when unavailable and `reason` always nonempty. Portal's own local refusals keep their typed status (such as `invalid`, `decision` or `root_not_admissible`) and carry at least a `message`; `reason` and `fix` may be absent. `http_status` and `job_id` remain metadata. Read `message`, and `reason` when present; never parse `body`.
 
 A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits. `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`; read their current values from `list_params`.
 
