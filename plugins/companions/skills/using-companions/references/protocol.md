@@ -18,4 +18,6 @@ Treat the response status as the next action:
 
 A 422 rejection lists what the API currently accepts — relay it and adjust rather than pre-judging what is enabled. `list_params` shows the currently available modes, models, settings, and limits. `list_params` reports `pause_cycle_cap`, `max_tool_output_bytes`, `max_tool_outputs_total_bytes` and `max_tool_iters`; read their current values from `list_params`.
 
+`local_tools` is a Portal-only `consult` field; the remote MCP does not accept it.
+
 If credit is insufficient, tell the user before attempting another consultation.
