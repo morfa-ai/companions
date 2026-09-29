@@ -9,6 +9,8 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-09-29
+
 ### Added
 
 - `companions` and `portal`: the skills document `cancel_job` — when to cancel, the `cancelled`/`cancel_requested`/`cancel_not_applied` statuses, re-cancelling on a pause, and what a cancel charges (work already done stays charged, charges for undelivered work are refunded, and nothing more is billed). It needs the API/Portal release that ships `cancel_job`.
@@ -240,7 +242,8 @@ remote MCP.
 - Commands: `/companions-balance`, `/companions-consult`, `/companions-discover`, `/companions-setup`. (`b5de196`)
 - CI workflow for automatic version bumping and a `bump-version.sh` script. (`b5de196`)
 
-[Unreleased]: https://github.com/neurowelt/companions/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/neurowelt/companions/compare/main...HEAD
+[0.9.0]: https://github.com/neurowelt/companions/releases/tag/v0.9.0
 [0.8.1]: https://github.com/neurowelt/companions/releases/tag/v0.8.1
 [0.8.0]: https://github.com/neurowelt/companions/releases/tag/v0.8.0
 [0.7.0]: https://github.com/neurowelt/companions/releases/tag/v0.7.0
