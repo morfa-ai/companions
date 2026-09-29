@@ -8,7 +8,7 @@
     {
       "name": "companions",
       "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through the remote Companions MCP.",
-      "version": "0.8.1",
+      "version": "0.9.0",
       "source": "./plugins/companions",
       "author": {
         "name": "humx.ai"
@@ -17,7 +17,7 @@
     {
       "name": "portal",
       "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through Portal, a local daemon that runs Companions tool calls on your machine (get.humx.ai).",
-      "version": "0.8.1",
+      "version": "0.9.0",
       "source": "./plugins/portal",
       "author": {
         "name": "humx.ai"
