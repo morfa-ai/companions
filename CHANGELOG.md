@@ -9,6 +9,8 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+## [0.9.1] - 2026-10-07
+
 ### Changed
 
 - `companions`: the remote MCP connection and OAuth resource use `api.morfa.ai`; setup instructions use the same endpoint.
@@ -248,6 +250,7 @@ remote MCP.
 - CI workflow for automatic version bumping and a `bump-version.sh` script. (`b5de196`)
 
 [Unreleased]: https://github.com/neurowelt/companions/compare/main...HEAD
+[0.9.1]: https://github.com/neurowelt/companions/releases/tag/v0.9.1
 [0.9.0]: https://github.com/neurowelt/companions/releases/tag/v0.9.0
 [0.8.1]: https://github.com/neurowelt/companions/releases/tag/v0.8.1
 [0.8.0]: https://github.com/neurowelt/companions/releases/tag/v0.8.0
