@@ -9,6 +9,11 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+### Changed
+
+- `companions`: the remote MCP connection and OAuth resource use `api.morfa.ai`; setup instructions use the same endpoint.
+- `companions` and `portal`: publisher metadata uses `morfa.ai`, and Portal installation links use `get.morfa.ai`.
+
 ## [0.9.0] - 2026-09-29
 
 ### Added

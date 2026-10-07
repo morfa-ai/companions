@@ -17,12 +17,12 @@ Install it by running the following command in your terminal:
 
 macOS / Linux:
 ```bash
-curl -fsSL https://get.humx.ai/install.sh | sh
+curl -fsSL https://get.morfa.ai/install.sh | sh
 ```
 
 Windows (PowerShell):
 ```powershell
-irm https://get.humx.ai/install.ps1 | iex
+irm https://get.morfa.ai/install.ps1 | iex
 ```
 
 The installer downloads the binary for your platform, verifies it, puts `portal` on your PATH and runs `portal setup` for you to authenticate, configure installation, tools and preferences. Run `portal setup` again to add a harness later. `portal update` updates Portal and offers to update the Companions plugin in Claude Code and Codex, and its skills in Hermes. Use `portal update --plugins-only` to check and update only the plugins and skills. Portal asks before running the host update commands; in a non-interactive terminal it prints manual instructions.
@@ -33,7 +33,7 @@ Plugin updates use the Claude Code and Codex CLIs. If a CLI is missing, Portal p
 
 ## Remote MCP
 
-We provide a remote MCP server hosted at `https://api.humx.ai/mcp` that your AI harness of choice can interact with.
+We provide a remote MCP server hosted at `https://api.morfa.ai/mcp` that your AI harness of choice can interact with.
 
 Choose the harness you want to connect for instructions:
 - [Claude Code](#claude-code)
@@ -59,7 +59,7 @@ After installation use `/mcp` command and navigate to `companions` MCP, where au
 
 In your **Claude Desktop** application go to **Customize** > **Connectors**. Click the "**+**" icon and choose **Add custom connector**. Fill out the fields:
 - **Name**: Companions
-- **MCP URL**: https://api.humx.ai/mcp
+- **MCP URL**: https://api.morfa.ai/mcp
 
 Confirm by clicking **Add**. Remember to enable each tool for that MCP by clicking the slider next to tool names.
 
@@ -67,7 +67,7 @@ Confirm by clicking **Add**. Remember to enable each tool for that MCP by clicki
 
 Connecting MCP to Hermes is easiest done using the following command:
 ```bash
-hermes mcp add --url https://api.humx.ai/mcp --auth oauth companions
+hermes mcp add --url https://api.morfa.ai/mcp --auth oauth companions
 ```
 
 ### Codex CLI

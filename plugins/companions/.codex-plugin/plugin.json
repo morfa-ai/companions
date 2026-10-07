@@ -3,7 +3,7 @@
   "version": "0.9.0",
   "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through the remote Companions MCP.",
   "author": {
-    "name": "humx.ai"
+    "name": "morfa.ai"
   },
   "license": "All rights reserved",
   "keywords": [
@@ -21,7 +21,7 @@
     "displayName": "Companions",
     "shortDescription": "Expert perspectives for everyday work",
     "longDescription": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through the remote Companions MCP.",
-    "developerName": "humx.ai",
+    "developerName": "morfa.ai",
     "category": "Productivity",
     "capabilities": [
       "Read",

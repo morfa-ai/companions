@@ -2,7 +2,7 @@
   "name": "companions-marketplace",
   "description": "Marketplace for the Companions MCP plugin",
   "owner": {
-    "name": "humx.ai"
+    "name": "morfa.ai"
   },
   "plugins": [
     {
@@ -11,16 +11,16 @@
       "version": "0.9.0",
       "source": "./plugins/companions",
       "author": {
-        "name": "humx.ai"
+        "name": "morfa.ai"
       }
     },
     {
       "name": "portal",
-      "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through Portal, a local daemon that runs Companions tool calls on your machine (get.humx.ai).",
+      "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through Portal, a local daemon that runs Companions tool calls on your machine (get.morfa.ai).",
       "version": "0.9.0",
       "source": "./plugins/portal",
       "author": {
-        "name": "humx.ai"
+        "name": "morfa.ai"
       }
     }
   ]
