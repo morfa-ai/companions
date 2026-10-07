@@ -7,6 +7,9 @@ Most importantly, you can start using Companions in any harness of your choice [
 > [!TIP]
 > For the best experience we recommend installing [Portal](#portal) – a small local MCP that connects to our service and handles tool calls for Companions.
 
+> [!NOTE]
+> If you are an AI agent setting up Companions for a user, read [Agent installation](#agent-installation) first.
+
 ## Portal
 
 Companions Portal is a small binary running our MCP locally on your computer. It authenticates with our service and connects to your installed harnesses.
@@ -81,3 +84,22 @@ codex mcp login companions --scopes openid,offline_access
 ```
 
 After login, restart Codex or start a new thread so the Companions tools are loaded again.
+
+## Agent installation
+
+This section is for AI agents asked to install Companions on a user's behalf. There are two ways to install it, and which one applies depends on what you can do in your current environment:
+
+| Your environment | Install | Read |
+| --- | --- | --- |
+| You can run shell commands on the user's machine | Portal | [Portal](#portal) |
+| You have no terminal access (for example a desktop or web chat app) | `companions` plugin or connector over remote MCP | [Remote MCP](#remote-mcp), then the subsection for the user's harness |
+
+Portal is the preferred path, so choose it whenever you have a terminal. It executes the tool calls Companions request locally, instead of routing each one through you. Fall back to Remote MCP only when you cannot run the installer, and do not ask the user to choose between the two: you already know what your environment allows.
+
+**Installing Portal.** Run the installer command for the user's operating system from [Portal](#portal). The installer finishes by running `portal setup`, which is interactive: the user signs in and chooses which harnesses, tools and preferences to configure. Those choices belong to the user, so let them answer the prompts. If your shell cannot show interactive prompts, give the user the installer command to run in their own terminal.
+
+**Installing over Remote MCP.** Open the subsection of [Remote MCP](#remote-mcp) that matches the harness the user is running and follow it. Some of those steps happen in the application's interface or in a browser sign-in that you cannot perform yourself. Give the user those steps exactly as written, with the endpoint `https://api.morfa.ai/mcp`.
+
+**Install one, not both.** The `portal` and `companions` plugins expose the same tools. If `companions` is already installed and you are adding Portal, `portal setup` offers to disable it, and the user should accept.
+
+**After installing.** New tools only load once the harness reloads: reload plugins in Claude Code, restart Codex or open a new thread, or start a new Hermes session. Then run the plugin's `setup` command, which checks connectivity and lists the available Companions without spending credit.
