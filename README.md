@@ -4,6 +4,8 @@ Companions bring expert perspective into your everyday work: a second opinion on
 
 Most importantly, you can start using Companions in any harness of your choice [using Portal](#portal) or through our [remote MCP](#remote-mcp).
 
+Make sure you've created an account on [Morfa Dashboard](https://profile.morfa.ai) before integrating.
+
 > [!TIP]
 > For the best experience we recommend installing [Portal](#portal) – a small local MCP that connects to our service and handles tool calls for Companions.
 
