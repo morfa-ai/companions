@@ -8,7 +8,7 @@
     {
       "name": "companions",
       "description": "Companions bring expert perspective into your everyday work: a second opinion on a decision, critique of plans, different framing for a problem, or actually novel ideas. Connects through the remote Companions MCP.",
-      "version": "0.9.1",
+      "version": "0.9.2",
       "source": "./plugins/companions",
       "author": {
         "name": "morfa.ai"

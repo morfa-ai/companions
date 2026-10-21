@@ -9,9 +9,12 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+## [0.9.2] - Unreleased
+
 ### Changed
 
 - `portal`: the `using-companions` protocol reference no longer presents crumbs as a `continue_from` override; only `model` and sampling may be overridden.
+- `companions`: version advanced with the portal plugin; the remote MCP it connects to (API 0.9.8) no longer accepts or lists crumbs; no skill text changed.
 
 ## [0.9.1] - 2026-10-07
 
@@ -254,6 +257,7 @@ remote MCP.
 - CI workflow for automatic version bumping and a `bump-version.sh` script. (`b5de196`)
 
 [Unreleased]: https://github.com/neurowelt/companions/compare/main...HEAD
+[0.9.2]: https://github.com/neurowelt/companions/releases/tag/v0.9.2
 [0.9.1]: https://github.com/neurowelt/companions/releases/tag/v0.9.1
 [0.9.0]: https://github.com/neurowelt/companions/releases/tag/v0.9.0
 [0.8.1]: https://github.com/neurowelt/companions/releases/tag/v0.8.1
