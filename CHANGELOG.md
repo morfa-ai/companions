@@ -9,6 +9,10 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
+### Changed
+
+- `portal`: the `using-companions` protocol reference no longer presents crumbs as a `continue_from` override; only `model` and sampling may be overridden.
+
 ## [0.9.1] - 2026-10-07
 
 ### Changed

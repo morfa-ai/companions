@@ -20,7 +20,7 @@ Send an `idempotency_key` with a `discover` request that may be retried, and reu
 
 ## Continuing a conversation
 
-After an `answer` or `parallel_with_main` run is collected, Portal keeps the thread locally. To continue it, call `consult` with `continue_from: <job_id>` and `prompt` as the next turn — not `messages`. It runs as `answer` with the same main; `model`, sampling and crumbs may be overridden; a different workspace, main or mode is refused. Against a Portal whose `consult` schema has no `continue_from`, start a fresh consult and carry the context in the prompt.
+After an `answer` or `parallel_with_main` run is collected, Portal keeps the thread locally. To continue it, call `consult` with `continue_from: <job_id>` and `prompt` as the next turn — not `messages`. It runs as `answer` with the same main; `model` and sampling may be overridden; a different workspace, main or mode is refused. Against a Portal whose `consult` schema has no `continue_from`, start a fresh consult and carry the context in the prompt.
 
 Treat the response status as the next action:
 
