@@ -9,7 +9,7 @@ line. Compatible releases may advance each component's patch independently.
 
 ## [Unreleased]
 
-## [0.9.2] - Unreleased
+## [0.9.2] - 2026-10-22
 
 ### Changed
 
