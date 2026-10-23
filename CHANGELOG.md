@@ -4,8 +4,7 @@ All notable changes to the Companions and Portal plugins are documented in this
 file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-From 0.7.0, the shared minor identifies the API, Portal, and plugin compatibility
-line. Compatible releases may advance each component's patch independently.
+From plugin 0.9.2, API 0.9.12 and Portal 0.9.7 versions advance independently.
 
 ## [Unreleased]
 
