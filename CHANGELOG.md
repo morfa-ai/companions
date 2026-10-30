@@ -8,6 +8,16 @@ From plugin 0.9.2, API 0.9.12 and Portal 0.9.7 versions advance independently.
 
 ## [Unreleased]
 
+## [0.9.3] - 2026-10-30
+
+### Fixed
+
+- `portal`: the commands and the `using-companions` skill now say there is no login step in the harness; a needs-auth state or an `authenticate` tool on this server means the local daemon refused the connection, so run `portal status` and reconnect in `/mcp` instead of calling that tool.
+
+### Changed
+
+- `companions`: version advanced with the portal plugin; no skill text changed.
+
 ## [0.9.2] - 2026-10-22
 
 ### Changed

@@ -12,4 +12,4 @@ The user invoked `/consult $ARGUMENTS`.
 3. If the right Companion, count, or mode is unclear, suggest the `discover` tool to have the system propose the best setup for this input.
 4. Run the consultation as the `using-companions` skill describes — it is the single home for how the system works (receipts, tool declarations, errors, presentation).
 
-On 401 or an authentication failure, use the `/setup` walkthrough.
+On a needs-auth state, or an `authenticate` tool on this server, do not call it: use the `/setup` walkthrough.

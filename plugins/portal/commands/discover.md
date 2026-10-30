@@ -10,4 +10,4 @@ The user invoked `/discover $ARGUMENTS`.
 3. Present the recommendation plainly: who, in which mode, why, and the expected cost. If it is marked ungrounded, say so and fall back to `list_companions` plus your own judgment — with a `query` built from the task (`list_companions(view="companions", query=…)`) if the tool advertises `view`, and the legacy `list_companions()` roster otherwise.
 4. Offer to run the setup via `consult`, following the `using-companions` skill. Run nothing without the user's go-ahead.
 
-On 401 or an authentication failure, use the `/setup` walkthrough.
+On a needs-auth state, or an `authenticate` tool on this server, do not call it: use the `/setup` walkthrough.
