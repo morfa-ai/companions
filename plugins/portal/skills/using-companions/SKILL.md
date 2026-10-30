@@ -83,6 +83,6 @@ Conceptual compression means removing repetition and shorthand while keeping the
 
 On first use, run the `/setup` flow: check the connection, show the roster from `list_companions` (one filtered page when the tool advertises `view`, the complete roster otherwise), explain how the system is used, and offer starting questions grounded in the user's actual recent work. Setup is free and never spends consultation credit. Do not ask the user to clear or restart the session.
 
-This plugin has no login step in the harness. A needs-auth state, or an `authenticate` tool appearing on this server, means the local Portal daemon refused the connection: do not call that tool. Run `portal status`, then reconnect in `/mcp`.
+This plugin has no login step in the harness. A needs-auth state, or an `authenticate` tool appearing on this server, means the local Portal daemon refused the connection: do not call that tool. Run `portal status`, then reconnect in `/mcp`. A 503 from this server means the daemon could not pin the connection to one process and will accept a retry; it is not an outage. Reconnect in `/mcp`, or retry the call once.
 
 Only `consult` and `discover` bill. `consult` returns a receipt with a `job_id`, never the answer: collect every run with `get_answer`, the only tool that returns content. `pending` means still running, not lost — never repeat `consult` to retrieve it. For continuation states such as `pending`, `requires_action`, and `needs_reply`, and for cancelling a job, follow [the consultation protocol](references/protocol.md).
