@@ -266,6 +266,7 @@ remote MCP.
 - CI workflow for automatic version bumping and a `bump-version.sh` script. (`b5de196`)
 
 [Unreleased]: https://github.com/neurowelt/companions/compare/main...HEAD
+[0.9.3]: https://github.com/neurowelt/companions/releases/tag/v0.9.3
 [0.9.2]: https://github.com/neurowelt/companions/releases/tag/v0.9.2
 [0.9.1]: https://github.com/neurowelt/companions/releases/tag/v0.9.1
 [0.9.0]: https://github.com/neurowelt/companions/releases/tag/v0.9.0
