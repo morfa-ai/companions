@@ -14,4 +14,4 @@ Arguments: `$ARGUMENTS` — the companion to meet (a name or `cmp_<uuid>` id), o
 
 3. Call `consult` with `mode="answer"`, `main=<companion>`, and that prompt, following the `using-companions` skill. Relay the introduction with attribution.
 
-On 401 or an authentication failure, use the `/setup` walkthrough.
+On a needs-auth state, or an `authenticate` tool on this server, do not call it: use the `/setup` walkthrough.
