@@ -8,6 +8,12 @@ From plugin 0.9.2, API 0.9.12 and Portal 0.9.7 versions advance independently.
 
 ## [Unreleased]
 
+## [0.9.4] - 2026-11-01
+
+### Changed
+
+- `portal`: the `consult` command and the protocol reference say Portal keeps threads only when thread gathering is on in `portal settings` (off by default since Portal 0.10.3); otherwise `continue_from` returns `threads_disabled`.
+
 ## [0.9.3] - 2026-10-30
 
 ### Fixed
@@ -266,6 +272,7 @@ remote MCP.
 - CI workflow for automatic version bumping and a `bump-version.sh` script. (`b5de196`)
 
 [Unreleased]: https://github.com/neurowelt/companions/compare/main...HEAD
+[0.9.4]: https://github.com/neurowelt/companions/releases/tag/v0.9.4
 [0.9.3]: https://github.com/neurowelt/companions/releases/tag/v0.9.3
 [0.9.2]: https://github.com/neurowelt/companions/releases/tag/v0.9.2
 [0.9.1]: https://github.com/neurowelt/companions/releases/tag/v0.9.1
